@@ -28,7 +28,7 @@ export async function insertCollection(collection, toInsert) {
 export async function updateCollection(collection, toUpdate, queryId) {
     try {
         let mongoCollection = db.collection(collection);
-        let result = await mongoCollection.updateOne(toUpdate, { $inc: { times_ran: 1 }, $push: { update_history: { timestamp: new Date(), query_id: queryId } } });
+        let result = await mongoCollection.updateOne(toUpdate, { $inc: { times_ran: 1 }, $push: { update_history: { timestamp: new Date(), queried_id: queryId } } });
         return result;
     } catch (e) {
         console.log(e);
