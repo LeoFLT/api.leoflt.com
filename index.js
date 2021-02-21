@@ -4,7 +4,6 @@ import http from 'http';
 import https from 'https';
 import crypto from 'crypto';
 import express from 'express';
-import { Transform } from 'stream';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { insertCollection, queryCollection, updateCollection } from './db.js';
@@ -123,5 +122,5 @@ const httpsServer = https.createServer({
     cert: pubCert
 }, server);
 
-httpServer.listen(port.http, () => console.log(`Listening for HTTP requests on port ${port.http}`));
+httpServer.listen(port.http, () => console.log(`Listening for HTTP requests to redirect to HTTPS (${port.http} => ${port.https})`));
 httpsServer.listen(port.https, () => console.log(`Listening for HTTPS requests on port ${port.https}`));
